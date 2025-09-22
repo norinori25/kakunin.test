@@ -1,0 +1,76 @@
+/* reset.css 読み込まれてる前提 */
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.confirm-box {
+    /* 確認画面の内容を囲むボックス */
+    width: 100%;
+    max-width: 700px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.confirm-box h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: darkcyan;
+}
+
+.confirm-item {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.confirm-item .label {
+    width: 180px;
+    font-weight: bold;
+    color: darkcyan;
+    text-align: left;
+}
+
+.confirm-item .value {
+    flex: 1;
+    color: #333;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem;
+    /* 「修正」「送信」など複数ボタンあれば間を空ける */
+}
+
+button {
+    padding: 0.6rem 2rem;
+    font-size: 1rem;
+    background-color: darkcyan;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: blue;
+}

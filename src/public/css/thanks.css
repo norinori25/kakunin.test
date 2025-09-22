@@ -1,0 +1,18 @@
+/* thanks.css - サンクスページ専用 */
+
+.thanks-message {
+    text-align: center;
+    font-size: 20px;
+    color: #007bff;
+    margin: 40px 0;
+}
+
+.return-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.return-link a {
+    color: #007bff;
+    text-decoration: underline;
+}
