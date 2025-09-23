@@ -1,19 +1,18 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>お問い合わせ完了</title>
+    <link rel="stylesheet" href="{{ asset('css/thanks.css') }}">
+</head>
+<body>
+    <div class="thanks-container">
+        <div class="thank-you-bg">Thank you</div>
 
-@section('title', 'お問い合わせ完了')
-
-@section('page_css')
-<link rel="stylesheet" href="{{ asset('css/thanks.css') }}">
-@endsection
-
-@section('content')
-<div class="container">
-    <div class="thanks-message">
-        <h1>お問い合わせありがとうございました</h1>
+        <div class="thank-you-message">
+            <h1>お問い合わせありがとうございました。</h1>
+            <a href="{{ url('/') }}" class="home-link">HOME</a>
+        </div>
     </div>
-
-    <div class="return-link">
-        <a href="{{ route('contacts.form') }}">HOME</a>
-    </div>
-</div>
-@endsection
+</body>
+</html>

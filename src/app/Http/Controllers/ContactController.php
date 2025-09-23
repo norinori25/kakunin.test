@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\ContactRequest;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
@@ -32,7 +33,7 @@ class ContactController extends Controller
 
         Contact::create($inputs);
 
-        return redirect()->route('contact.thanks');
+        return redirect()->route('contacts.thanks');
     }
 
     // 修正ボタンを押したときにフォームへ戻す
@@ -41,5 +42,9 @@ class ContactController extends Controller
         return redirect()->route('contacts.form')->withInput();
     }
 
+    public function thanks()
+    {
+    return view('contacts.thanks');
+    }
 
 }
