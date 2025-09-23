@@ -1,68 +1,53 @@
-/* reset.css 読み込まれてる前提 */
-
-body,
-html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: #f9f9f9;
-}
-
-.form-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem 1rem;
-    box-sizing: border-box;
-    min-height: 100vh;
-}
-
-.confirm-box {
-    /* 確認画面の内容を囲むボックス */
-    width: 100%;
-    max-width: 700px;
-    background: #fff;
+.confirm-container {
+    max-width: 800px;
+    margin: 2rem auto;
     padding: 2rem;
+    background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
 }
 
-.confirm-box h1 {
+h1 {
     font-size: 1.8rem;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     color: darkcyan;
 }
 
-.confirm-item {
+.confirm-table {
     display: flex;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
-.confirm-item .label {
-    width: 180px;
+.row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.label {
     font-weight: bold;
-    color: darkcyan;
-    text-align: left;
-}
-
-.confirm-item .value {
-    flex: 1;
     color: #333;
+    width: 30%;
 }
 
-.form-buttons {
+.value {
+    width: 65%;
+    color: #555;
+    word-break: break-word;
+}
+
+.confirm-buttons {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
-    gap: 1rem;
-    /* 「修正」「送信」など複数ボタンあれば間を空ける */
+    gap: 2rem;
 }
 
 button {
-    padding: 0.6rem 2rem;
+    padding: 0.6rem 1.5rem;
     font-size: 1rem;
     background-color: darkcyan;
     color: white;
@@ -72,5 +57,5 @@ button {
 }
 
 button:hover {
-    background-color: blue;
+    background-color: darkblue;
 }

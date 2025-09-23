@@ -9,11 +9,11 @@
 @section('content')
 <div class="container">
     <div class="thanks-message">
-        <h1>お問い合わせありがとうございました。</h1>
+        <h1>お問い合わせありがとうございました</h1>
     </div>
 
     <div class="return-link">
-        <a href="{{ route('contact.form') }}">HOME</a>
+        <a href="{{ route('contacts.form') }}">HOME</a>
     </div>
 </div>
 @endsection

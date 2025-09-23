@@ -1,4 +1,3 @@
-{{-- resources/views/contacts/confirm.blade.php --}}
 @extends('layouts.app')
 
 @section('title')
@@ -19,12 +18,15 @@
                 <div class="value">{{ $inputs['last_name'] }} {{ $inputs['first_name'] }}</div>
             </div>
             <div class="row">
-                <div class="label">性別</div>
+                <div class="label">性別</div> 
                 <div class="value">
-                    @php
-                        $genders = [1 => '男性', 2 => '女性', 3 => 'その他'];
-                    @endphp
-                    {{ $genders[$inputs['gender']] ?? '' }}
+                    @if ($inputs['gender'] == 1)
+                        男性
+                    @elseif ($inputs['gender'] == 2)
+                        女性
+                    @else
+                        その他
+                    @endif
                 </div>
             </div>
             <div class="row">
@@ -40,25 +42,35 @@
                 <div class="value">{{ $inputs['address'] }}</div>
             </div>
             <div class="row">
+                <div class="label">建物名</div>
+                <div class="value">{{ $inputs['building'] }}</div>
+            </div>
+            <div class="row">
                 <div class="label">お問い合わせの種類</div>
                 <div class="value">{{ $inputs['category_name'] ?? '' }}</div>
             </div>
             <div class="row">
                 <div class="label">お問い合わせ内容</div>
-                <div class="value">{{ $inputs['content'] }}</div>
+                <div class="value">{{ $inputs['detail'] }}</div>
             </div>
         </div>
+        <div class="confirm-buttons">
+            <form action="{{ route('contacts.store') }}" method="POST">
+                @csrf
+            
+                @foreach ($inputs as $name => $value)
+                    <input type="hidden" name="{{ $name }}" value="{{ $value }}">
+                @endforeach
+                <button type="submit">送信</button>
+            </form>
 
-        <form action="{{ route('contacts.store') }}" method="POST">
-            @csrf
-            @foreach ($inputs as $key => $value)
-                <input type="hidden" name="{{ $key }}" value="{{ $value }}">
-            @endforeach
-
-            <div class="confirm-buttons">
-                <button type="submit" name="action" value="back">修正する</button>
-                <button type="submit" name="action" value="submit">送信する</button>
-            </div>
-        </form>
+            <form action="{{ route('contacts.back') }}" method="POST">
+                @csrf
+                @foreach ($inputs as $name => $value)
+                    <input type="hidden" name="{{ $name }}" value="{{ $value }}">
+                @endforeach
+                <button type="submit">修正</button>
+            </form>
+        </div>
     </div>
 @endsection

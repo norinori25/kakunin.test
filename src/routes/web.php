@@ -16,7 +16,6 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', [ContactController::class, 'showForm'])->name('contacts.form');
 Route::post('/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm');
-Route::post('/thanks', [ContactController::class, 'send'])->name('contacts.send');
-Route::get('/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm');
 Route::post('/store', [ContactController::class, 'store'])->name('contacts.store');
-
+Route::get('/thanks', [ContactController::class, 'thanks'])->name('contacts.thanks');
+Route::post('/back', [ContactController::class, 'back'])->name('contacts.back');

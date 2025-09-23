@@ -26,18 +26,20 @@ class ContactController extends Controller
         return view('contacts.confirm', compact('inputs'));
     }
 
-    public function send(Request $request)
+    public function store(ContactRequest $request)
     {
-        $validated = $request->validate([
-            'last_name' => 'required',
-            'first_name' => 'required',
-        // 他のバリデーションルール
-    ]);
+        $inputs = $request->validated();
 
-    // 保存処理
-    Contact::create($validated);
+        Contact::create($inputs);
 
-    return view('contacts.thanks');
+        return redirect()->route('contact.thanks');
     }
+
+    // 修正ボタンを押したときにフォームへ戻す
+    public function back(Request $request)
+    {
+        return redirect()->route('contacts.form')->withInput();
+    }
+
 
 }

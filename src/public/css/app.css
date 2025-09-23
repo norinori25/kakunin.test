@@ -1,17 +1,18 @@
 body {
     font-family: 'Helvetica Neue', sans-serif;
-    margin: 0 auto;
-    color:black;
+    margin: 0;
+    padding: 0;
+    color:darkcyan;
+    background-color: #fff;
 }
 
 main {
-    padding: 0;
+    padding: 0.5rem 0;
 }
 
 .inner-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 1rem;
 }
 
 /* ヘッダー */
@@ -26,7 +27,7 @@ main {
 }
 
 .header-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -35,55 +36,4 @@ main {
     font-weight: bold;
     color:darkblue;
     margin: 0;
-}
-
-h1 {
-    font-size: 1.3rem;
-    text-align: center;
-    color:darkcyan;
-}
-
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5em;
-}
-
-.form-label {
-    width: 180px;
-    font-weight: bold;
-}
-
-.form-inputs {
-    display: flex;
-    gap: 10px;
-}
-
-textarea {
-    resize: vertical;
-}
-
-.error {
-    color: red;
-    margin-left: 180px;
-    font-size: 0.9em;
-}
-
-.form-buttons {
-    margin-left: 180px;
-    margin-top: 20px;
-}
-
-button {
-    padding: 8px 16px;
-    font-size: 14px;
-    background-color:darksalmon;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color:darkgoldenrod;
 }

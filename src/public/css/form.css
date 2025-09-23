@@ -1,71 +1,118 @@
-/* public/css/confirm.css */
-
 body {
-    font-family: 'Helvetica Neue', sans-serif;
-    background-color: #f9f9f9;
+    font-family: "Helvetica Neue", sans-serif;
+    background-color: #f8f9fa;
+    color: #00695c;
+    /* 深めのエメラルド */
     margin: 0;
-    padding: 0;
+    padding: 2rem;
 }
 
-.confirm-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #fff;
+.form-container {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem 2.5rem;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    font-size: 1.8rem;
     text-align: center;
     margin-bottom: 2rem;
-    color: darkcyan;
+    color: #004d40;
 }
 
-.confirm-table {
+/* ラベルと入力の2カラムレイアウト */
+.form-group {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
 }
 
-.row {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.5rem;
-}
-
-.label {
+.form-label {
+    flex: 0 0 120px;
     font-weight: bold;
-    color: #333;
-    width: 30%;
+    padding-top: 0.4rem;
 }
 
-.value {
-    width: 65%;
-    text-align: left;
-    color: #555;
-    word-break: break-word;
+.required {
+    color: red;
+    margin-left: 0.25rem;
+    font-size: 0.9em;
 }
 
-.confirm-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-button {
-    padding: 0.6rem 1.5rem;
+/* テキスト入力・セレクト・テキストエリア共通 */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
     font-size: 1rem;
-    background-color: darkcyan;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline-color: #26a69a;
+    /* エメラルド系 */
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* ラジオボタンだけ特別 */
+.radio-group {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    padding-top: 0.3rem;
+}
+
+.radio-group label {
+    font-weight: normal;
+}
+
+/* ボタン */
+.form-buttons {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.form-buttons button {
+    background-color: #00796b;
     color: white;
     border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-button:hover {
-    background-color: darkblue;
+.form-buttons button:hover {
+    background-color: #004d40;
+}
+
+.form-inputs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap; /* スマホで折り返し対応 */
+}
+
+.form-input-with-error {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.name-input {
+  width: 100%;
+}
+
+/* エラーメッセージは入力のすぐ下に */
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
 }
