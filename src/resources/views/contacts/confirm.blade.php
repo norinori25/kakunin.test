@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="confirm-container">
-        <h1>確認画面</h1>
+        <h1>Confirm</h1>
 
         <div class="confirm-table">
             <div class="row">

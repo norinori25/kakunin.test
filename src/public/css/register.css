@@ -1,0 +1,123 @@
+body {
+    font-family: "Helvetica Neue", sans-serif;
+    background-color: #f8f9fa;
+    color: #004d40;
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+    height: 100vh;
+}
+
+.header {
+    max-width: 100%;
+}
+
+.site-header {
+    position: relative;
+    background-color: #fff;
+    padding: 2rem 3rem 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-nav {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: darkblue;
+    z-index: 1;
+}
+
+.header-nav__link {
+    background-color: darkcyan;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.header-nav__button {
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 2.5rem;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    border-radius: 3px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #00796b;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline-color: #26a69a;
+}
+
+.required {
+    color: red;
+    margin-left: 0.25rem;
+    font-size: 0.9em;
+}
+
+.form-buttons {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.form-buttons button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.form-buttons button:hover {
+    background-color: #004d40;
+}
+
+.error {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}

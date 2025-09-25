@@ -1,8 +1,28 @@
+/* シンプルなヘッダー */
+.site-header {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* ロゴ */
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: darkblue;
+    margin-left: 20px;
+}
+
 body {
     font-family: "Helvetica Neue", sans-serif;
     background-color: #f8f9fa;
     color: #00695c;
-    /* 深めのエメラルド */
     margin: 0;
     padding: 2rem;
 }
@@ -91,12 +111,6 @@ textarea {
 
 .form-buttons button:hover {
     background-color: #004d40;
-}
-
-.form-inputs {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap; /* スマホで折り返し対応 */
 }
 
 .form-input-with-error {

@@ -1,3 +1,30 @@
+/* シンプルなヘッダー */
+.site-header {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* ロゴ */
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: darkblue;
+    margin-left: 20px;
+}
+
+/* ナビゲーション（省略） */
+.header-nav {
+    display: none;
+    /* ナビゲーションが不要な場合は非表示 */
+}
+
 .confirm-container {
     max-width: 800px;
     margin: 2rem auto;

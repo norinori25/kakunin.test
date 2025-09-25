@@ -1,0 +1,124 @@
+/* ヘッダー */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.header-nav a.register-link {
+    text-decoration: none;
+    color: darkcyan;
+    font-weight: bold;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    /* フォントサイズを少し大きく */
+}
+
+.header-nav a.register-link:hover {
+    text-decoration: underline;
+}
+
+/* フォームコンテナ */
+.form-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-container h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* 各入力フィールド */
+.form-group {
+    margin-bottom: 1.5rem;
+    /* フォームグループ間のスペースを増加 */
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    color: #333;
+}
+
+.form-group .required {
+    color: red;
+    margin-left: 0.2rem;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    /* 入力フィールドのパディングを少し大きく */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+    /* フォーカス時にボーダーカラーが変化 */
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: darkcyan;
+    /* フォーカス時にボーダーが暗青色に変わる */
+}
+
+/* ボタン */
+.form-buttons {
+    margin-top: 2rem;
+    /* ボタンとフォームの間隔を広げる */
+    text-align: center;
+}
+
+.form-buttons button {
+    background-color: darkcyan;
+    color: white;
+    padding: 0.6rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-buttons button:hover {
+    background-color: #007a7a;
+    /* ホバー時にボタン色が変化 */
+}
+
+.form-buttons button:active {
+    background-color: #004d4d;
+    /* クリック時にボタン色をさらに変化 */
+}
+
+/* エラーメッセージ */
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    /* エラーメッセージの上部にスペースを追加 */
+}
+
+/* 登録リンク */
+.form-container a {
+    color: darkcyan;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-container a:hover {
+    text-decoration: underline;
+}
