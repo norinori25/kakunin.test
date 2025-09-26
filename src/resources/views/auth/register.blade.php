@@ -13,7 +13,7 @@
 <header class="site-header">
     <h1 class="header-logo">FashionablyLate</h1>
     <nav class="header-nav">
-        <a href="/login" class="header-nav__link">Login</a>
+        <a href="/login" class="header-nav__link">login</a>
     </nav>
 </header>
 

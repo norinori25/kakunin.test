@@ -9,6 +9,11 @@
 @endpush
 
 @section('content')
+<header class="site-header">
+  <h1 class="header-logo">FashionablyLate</h1>
+</header>   
+
+<main>
     <div class="confirm-container">
         <h1>Confirm</h1>
 
@@ -73,4 +78,5 @@
             </form>
         </div>
     </div>
+</main>
 @endsection

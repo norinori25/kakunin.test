@@ -17,7 +17,7 @@
     <main>
       <div class="inner-container">
         <div class="form-container">
-         <form action="{{ route('contacts.confirm') }}" method="POST">
+         <form action="{{ route('contacts.confirm') }}" method="POST" novalidate>
         @csrf
         <h1>Contact</h1>
 

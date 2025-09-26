@@ -19,9 +19,8 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
-Route::get('/register', [AuthController::class, 'register'])
-    ->middleware('guest')
-    ->name('register');
+Route::get('/register', [AuthController::class, 'register'])->middleware('guest')->name('register');
+Route::post('/register', [AuthController::class, 'store'])->middleware('guest')->name('register.store');
 Route::get('/', [ContactController::class, 'showForm'])->name('contacts.form');
 Route::post('/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm');
 Route::post('/store', [ContactController::class, 'store'])->name('contacts.store');
