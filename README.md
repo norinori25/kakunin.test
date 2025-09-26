@@ -1,8 +1,9 @@
 # お問い合わせフォーム
 
 ## 環境構築
+
 Dockerビルド
-  1. git@github.com:Estra-Coachtech/laravel-docker-template.git
+  1. git@github.com:norinori25/kakunin.test.git
   2. docker compose up -d -build
 
   *MySQLは、OSによって起動しない場合があるので、それぞれのPCに合わせてdocker-compose.ymlファイルを
@@ -16,12 +17,16 @@ Laravel環境構築
   5. php artisan migrate
   6. php artisan db:seed
   
-##使用技術（実行環境）
-- PHP 8.x
-- Laravel 10.x
-- MySQL 8.x
-  
-##URL　
+## 使用技術（実行環境）
+・ PHP 8.x
+・Laravel 10.x
+・ MySQL 8.x
+
+## ER図
+
+![ER図](./docs/er.png)
+
+## URL
 ・開発環境 : http://localhost/
 ・phpMyAdmin : http//localhost:8080/
  
