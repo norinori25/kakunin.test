@@ -16,6 +16,8 @@ use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\CreateNewUser;
+use App\Actions\Fortify\LoginUser;
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -39,25 +41,7 @@ class FortifyServiceProvider extends ServiceProvider
 
         
 
-        //  ログイン処理の定義（メールとパスワードで認証）
-        Fortify::authenticateUsing(function (Request $request) {
-            Validator::make($request->all(), [
-                'email' => ['required', 'email'],
-                'password' => ['required', 'string'],
-            ], [
-                'email.required' => 'メールアドレスを入力してください',
-                'email.email' => 'メールアドレスは「ユーザー名@ドメイン」形式で入力してください',
-                'password.required' => 'パスワードを入力してください',
-            ])->validate();
-
-            $user = User::where('email', $request->email)->first();
-
-            if ($user && Hash::check($request->password, $user->password)) {
-                 return $user;
-            }
-
-            return null;
-        });
+       //Fortify::authenticateUsing([LoginUser::class, 'login']);
     }
 }
 

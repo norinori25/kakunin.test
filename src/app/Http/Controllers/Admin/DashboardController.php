@@ -56,9 +56,17 @@ class DashboardController extends Controller
         return back()->with('success', '削除しました');
     }
 
-    public function show($id)
+    public function show($id) 
     {
-        return response()->json(Contact::with('category')->findOrFail($id));
+        $contact = Contact::with('category')->findOrFail($id);
+
+        return response()->json([
+            'full_name' => $contact->full_name,
+            'email' => $contact->email,
+            'gender_label' => $contact->gender_label,
+            'category' => $contact->category ? ['content' => $contact->category->content] : null,
+            'detail' => $contact->detail,
+        ]);
     }
 
     private function filteredContacts(Request $request)

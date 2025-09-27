@@ -10,9 +10,13 @@
 <header class="site-header">
     <h1 class="header-logo">FashionablyLate</h1>
     <nav class="header-nav">
-        <a href="/login" class="header-nav__link">logout</a>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="header-nav__link">logout</button>
+        </form>
     </nav>
 </header>
+
 <main class="admin-dashboard">
     <h1>お問い合わせ管理</h1>
 
@@ -88,34 +92,49 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+    const closeBtn = modal.querySelector('.close');
+
+    const openModal = (html) => {
+        modalBody.innerHTML = html;
+        modal.classList.remove('hidden');
+    };
+
+    const closeModal = () => {
+        modal.classList.add('hidden');
+    };
+
+    // モーダル閉じる
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // 詳細ボタン
     document.querySelectorAll('.detail-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const id = this.dataset.id;
-            fetch(`/admin/contacts/${id}`)
-                .then(res => res.json())
-                .then(data => {
-                    const modal = document.getElementById('modal');
-                    const body = document.getElementById('modal-body');
-                    body.innerHTML = `
-                        <p><strong>氏名：</strong> ${data.full_name}</p>
-                        <p><strong>メール：</strong> ${data.email}</p>
-                        <p><strong>性別：</strong> ${data.gender_label}</p>
-                        <p><strong>種別：</strong> ${data.category?.content ?? '-'}</p>
-                        <p><strong>内容：</strong> ${data.detail}</p>
-                    `;
-                    modal.classList.remove('hidden');
-                });
+        btn.addEventListener('click', async () => {
+            const id = btn.dataset.id;
+            openModal('読み込み中...');
+
+            try {
+                const res = await fetch(`/admin/contacts/${id}`);
+                if (!res.ok) throw new Error('データ取得失敗');
+
+                const data = await res.json();
+                openModal(`
+                    <p><strong>氏名：</strong> ${data.full_name}</p>
+                    <p><strong>メール：</strong> ${data.email}</p>
+                    <p><strong>性別：</strong> ${data.gender_label}</p>
+                    <p><strong>種別：</strong> ${data.category?.content ?? '-'}</p>
+                    <p><strong>内容：</strong> ${data.detail}</p>
+                `);
+            } catch (err) {
+                console.error(err);
+                openModal('<p>データの取得に失敗しました</p>');
+            }
         });
     });
-
-    document.querySelector('.close').addEventListener('click', () => {
-        document.getElementById('modal').classList.add('hidden');
-    });
-});
-
-
-document.querySelector('.close').addEventListener('click', () => {
-    document.getElementById('modal').classList.add('hidden');
 });
 </script>
 @endpush

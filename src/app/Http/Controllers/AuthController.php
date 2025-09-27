@@ -22,9 +22,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        Auth::login($user);
-
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('login');
     }
 }
 

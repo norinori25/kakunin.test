@@ -30,5 +30,5 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/export', [DashboardController::class, 'export'])->name('export');
     Route::delete('/contacts/{id}', [DashboardController::class, 'destroy'])->name('delete');
-    Route::get('/contacts/{id}', [DashboardController::class, 'show'])->name('show'); // ← モーダル用API
+    Route::get('/contacts/{id}', [DashboardController::class, 'show'])->name('contacts.show'); // ← モーダル用API
 });

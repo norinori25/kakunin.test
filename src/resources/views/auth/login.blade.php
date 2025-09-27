@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>ログイン</title>
+@endsection
+
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 @endpush
@@ -9,8 +13,7 @@
 <header class="site-header">
     <h1 class="header-logo">FashionablyLate</h1>
     <nav class="header-nav">
-        <!-- ログインフォームの上部にユーザー登録ページへのリンクを配置 -->
-        <a href="{{ route('register') }}" class="register-link">register</a>
+        <a href="{{ route('register') }}" class="header-nav__link">register</a>
     </nav>
 </header>   
 
@@ -18,8 +21,8 @@
     <div class="form-container">
         <h1>Login</h1>
 
-        <!-- ログインフォーム -->
-        <form method="POST" action="/login">
+        {{-- メールアドレス --}}
+        <form method="POST" action="/login" novalidate>
             @csrf      
             <div class="form-group">
                 <label>メールアドレス<span class="required">※</span></label>
@@ -29,6 +32,7 @@
                 @enderror
             </div>
 
+            {{-- パスワード --}}
             <div class="form-group">
                 <label>パスワード<span class="required">※</span></label>
                 <input type="password" name="password">
