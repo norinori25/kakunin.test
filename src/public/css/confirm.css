@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    width: 100vw;
+    width: 100%;
 }
 
 .site-header {
@@ -26,7 +26,6 @@ header {
     font-size: 1.8rem;
     font-weight: bold;
     color: darkblue;
-    z-index: 1;
 }
 
 .confirm-container {
@@ -38,18 +37,10 @@ header {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-body {
-    font-family: "Helvetica Neue", sans-serif;
-    background-color: #f8f9fa;
-    color: #00695c;
-    margin: 0;
-    padding: 2rem;
-}
-
 h1 {
     font-size: 1.8rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: darkcyan;
 }
 
