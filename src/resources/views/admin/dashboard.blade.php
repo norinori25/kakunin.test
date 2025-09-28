@@ -21,8 +21,7 @@
     <h1>Admin</h1>
 
     <form method="GET" action="{{ route('admin.dashboard') }}" class="search-form">
-        <input type="text" name="name" placeholder="氏名" value="{{ request('name') }}">
-        <input type="email" name="email" placeholder="メールアドレス" value="{{ request('email') }}">
+        <input type="text" name="keyword" placeholder="氏名またはメールアドレス" value="{{ request('keyword') }}">
         <select name="gender">
             <option value="all">性別</option>
             <option value="1" {{ request('gender') === '1' ? 'selected' : '' }}>男性</option>
@@ -53,23 +52,19 @@
         <thead>
             <tr>
                 <th>氏名</th>
-                <th>メールアドレス</th>
                 <th>性別</th>
+                <th>メールアドレス</th>
                 <th>お問い合わせ種類</th>
-                <th>内容</th>
-                <th>日付</th>
-                <th>操作</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($contacts as $contact)
             <tr>
                 <td>{{ $contact->full_name }}</td>
-                <td>{{ $contact->email }}</td>
                 <td>{{ $contact->gender_label }}</td>
+                <td>{{ $contact->email }}</td>
                 <td>{{ $contact->category->content ?? '-' }}</td>
-                <td>{{ Str::limit($contact->detail, 20) }}</td>
-                <td>{{ $contact->created_at->format('Y-m-d') }}</td>
                 <td>
                     <button class="detail-btn" data-id="{{ $contact->id }}">詳細</button>
                 </td>

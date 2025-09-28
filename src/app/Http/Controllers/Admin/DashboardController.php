@@ -73,13 +73,14 @@ class DashboardController extends Controller
     {
         $query = Contact::query()->with('category');
 
-        if ($request->filled('name')) {
-            $query->where(DB::raw("CONCAT(last_name, first_name)"), 'like', "%{$request->name}%");
+        if ($request->filled('keyword')) {
+            $keyword = str_replace(' ', '', $request->keyword); 
+            $query->where(function($q) use ($keyword) {
+            $q->where(DB::raw("CONCAT(last_name, first_name)"), 'like', "%{$keyword}%")
+            ->orWhere('email', 'like', "%{$keyword}%");
+            });
         }
 
-        if ($request->filled('email')) {
-            $query->where('email', 'like', "%{$request->email}%");
-        }
 
         if ($request->filled('gender') && $request->gender !== 'all') {
             $query->where('gender', $request->gender);

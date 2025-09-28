@@ -125,19 +125,30 @@ h1 {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 5rem;
+    border: 2px solid #ccc;
 }
 
 .contact-table th,
 .contact-table td {
     padding: 0.75rem;
-    border: 1px solid #ccc;
     text-align: left;
+    border-bottom: 1px solid #ccc;
+    border-right: none;
+}
+
+.contact-table th {
+    background-color: #00796b;
+    color: #fff;
+    font-weight: bold;
+}
+
+.contact-table td:last-child {
+    text-align: center;
 }
 
 .detail-btn,
-.delete-btn,
 .export-btn {
-    background: darkcyan;
+    background: teal;
     color: white;
     border: none;
     padding: 0.4rem 0.8rem;
