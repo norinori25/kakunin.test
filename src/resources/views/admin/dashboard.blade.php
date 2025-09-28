@@ -10,7 +10,7 @@
 <header class="site-header">
     <h1 class="header-logo">FashionablyLate</h1>
     <nav class="header-nav">
-        <form method="POST" action="{{ route('logout') }}">
+        <form method="POST" action="{{ route('logout') }}" id="logout-form">
             @csrf
             <button type="submit" class="header-nav__link">logout</button>
         </form>
@@ -18,7 +18,7 @@
 </header>
 
 <main class="admin-dashboard">
-    <h1>お問い合わせ管理</h1>
+    <h1>Admin</h1>
 
     <form method="GET" action="{{ route('admin.dashboard') }}" class="search-form">
         <input type="text" name="name" placeholder="氏名" value="{{ request('name') }}">
@@ -43,6 +43,12 @@
         <a href="{{ route('admin.export') }}" class="export-btn">エクスポート</a>
     </form>
 
+    <div class="table-header">
+        <div class="pagination-wrapper">
+            {{ $contacts->appends(request()->except('page'))->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
+
     <table class="contact-table">
         <thead>
             <tr>
@@ -66,24 +72,22 @@
                 <td>{{ $contact->created_at->format('Y-m-d') }}</td>
                 <td>
                     <button class="detail-btn" data-id="{{ $contact->id }}">詳細</button>
-                    <form method="POST" action="{{ route('admin.delete', $contact->id) }}" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="delete-btn">削除</button>
-                    </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 
-    {{ $contacts->links() }}
-
     <!-- モーダル -->
-    <div id="modal" class="modal hidden">
+     <div id="modal" class="modal hidden">
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="modal-body">読み込み中...</div>
+            <form id="modal-delete-form" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="delete-btn">削除</button>
+            </form>
         </div>
     </div>
 </main>
@@ -95,46 +99,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('modal');
     const modalBody = document.getElementById('modal-body');
     const closeBtn = modal.querySelector('.close');
+    const deleteForm = document.getElementById('modal-delete-form');
 
-    const openModal = (html) => {
-        modalBody.innerHTML = html;
-        modal.classList.remove('hidden');
-    };
-
-    const closeModal = () => {
-        modal.classList.add('hidden');
-    };
-
-    // モーダル閉じる
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-
-    // 詳細ボタン
     document.querySelectorAll('.detail-btn').forEach(btn => {
-        btn.addEventListener('click', async () => {
+        btn.addEventListener('click', () => {
             const id = btn.dataset.id;
-            openModal('読み込み中...');
+            modalBody.innerHTML = '読み込み中...';
+            modal.classList.remove('hidden');
 
-            try {
-                const res = await fetch(`/admin/contacts/${id}`);
-                if (!res.ok) throw new Error('データ取得失敗');
-
-                const data = await res.json();
-                openModal(`
-                    <p><strong>氏名：</strong> ${data.full_name}</p>
-                    <p><strong>メール：</strong> ${data.email}</p>
-                    <p><strong>性別：</strong> ${data.gender_label}</p>
-                    <p><strong>種別：</strong> ${data.category?.content ?? '-'}</p>
-                    <p><strong>内容：</strong> ${data.detail}</p>
-                `);
-            } catch (err) {
-                console.error(err);
-                openModal('<p>データの取得に失敗しました</p>');
-            }
+            fetch(`/admin/contacts/${id}`)
+                .then(res => {
+                    if (!res.ok) throw new Error('Network response was not ok');
+                    return res.json();
+                })
+                .then(data => {
+                    modalBody.innerHTML = `
+                        <p><strong>氏名：</strong> ${data.full_name}</p>
+                        <p><strong>メール：</strong> ${data.email}</p>
+                        <p><strong>性別：</strong> ${data.gender_label}</p>
+                        <p><strong>種別：</strong> ${data.category?.content ?? '-'}</p>
+                        <p><strong>内容：</strong> ${data.detail}</p>
+                    `;
+                    deleteForm.action = `/admin/contacts/${id}`;
+                })
+                .catch(err => {
+                    console.error(err);
+                    modalBody.innerHTML = '<p>データの取得に失敗しました</p>';
+                });
         });
+    });;
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+    }
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
     });
 });
 </script>
 @endpush
+

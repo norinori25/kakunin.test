@@ -9,10 +9,8 @@
 </head>
 
 <body>
-    
-   @yield('content')
+    @yield('content')
 
-   @stack('scripts')
-      
+    @stack('scripts')
 </body>
 </html>

@@ -9,17 +9,15 @@ class LoginUser
 {
     public function login(LoginRequest $request)
     {
-        // LoginRequest のバリデーション実行
-        $request->validated(); // rules と messages がここで適用される
+        $request->validated();
 
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/admin'); // ログイン成功後
+            return redirect()->intended('/admin'); 
         }
 
-        // 失敗したら両方に個別メッセージ
         return back()->withErrors([
             'email'    => 'メールアドレスが正しくありません',
             'password' => 'パスワードが正しくありません',

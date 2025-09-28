@@ -128,7 +128,7 @@
                 <div class="form-group">
                     <label class="form-label">お問い合わせ内容<span class="required">※</span></label>
                     <div class="form-input-with-error">
-                        <textarea name="detail" rows="5" maxlength="120">{{ old('detail') }}</textarea>
+                        <textarea name="detail" rows="5" maxlength="130">{{ old('detail') }}</textarea>
                         @error('detail')
                             <p class="error">{{ $message }}</p>
                         @enderror
